@@ -1,0 +1,42 @@
+Welcome! If you are new to the game, here are some tips: 
+ 
+Look at your surroundings with the command "ls". 
+Move to a new location with the command "cd LOCATION" 
+You can backtrack with the command "cd ..". 
+Interact with things in the world with the command "less ITEM" 
+ 
+If you forget where you are, type "pwd" 
+ 
+Go ahead, explore. We hope you enjoy what you find. Do ls as your first command.
+ 
+>ls
+ Locations: 
+WesternForest
+NorthernMeadow
+MIT
+ Items: 
+WelcomeLetter
+>cd Locations WesternForest
+You can't move to multiple locations.
+>cd Mit
+There is no room called Mit.
+>cd MIT
+You have moved to MIT. You have arrived by magic carpet to MIT!
+>cd..
+Command 'cd..' not found in room 'MIT'
+>cd ..
+You have moved to Home. You are in the comfort of your own home.
+>less WelcomeLetter
+Welcome! If you are new to the game, here are some tips: 
+ 
+Look at your surroundings with the command "ls". 
+Move to a new location with the command "cd LOCATION" 
+You can backtrack with the command "cd ..". 
+Interact with things in the world with the command "less ITEM" 
+ 
+If you forget where you are, type "pwd" 
+ 
+Go ahead, explore. We hope you enjoy what you find. Do ls as your first command.
+ 
+>pwd
+You are in Home.

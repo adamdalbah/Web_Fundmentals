@@ -1,0 +1,122 @@
+* {
+    margin:0px;
+    padding:0px;
+}
+#background {
+    
+    margin-left: 200px;
+    width:1080px;
+    /* background-image:radial-gradient(silver,black); */
+    background-image:linear-gradient(to top, silver, black)
+
+}
+.header{
+    width: auto;
+    height: 60px;
+    background-color:rgb(246 241 241 / 81%);
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    padding: 10px;
+
+}
+h1{
+    
+    font-family: cursive;
+    font-size: 35px;
+}
+.top{
+    display: flex;
+    justify-content:space-evenly;
+    
+}
+.profile{
+    border:5px solid rgb(175, 169, 169);
+    background-image: url('img/photo_of_me.jpg');
+    background-size: 500px;
+    width: 500px;
+    height: 320px;
+    margin: 15px 0px;
+}
+.about{
+    width:500px;
+    margin: 15px 0px;  
+}
+h3{
+    
+    height: 25px;
+    color:white;
+    background-color: rgb(156, 146, 146);
+    font-size: x-large;
+    padding: 10px;
+    
+}
+p{
+    height: 275px;
+    background-color: rgb(230, 222, 222);
+    padding: 5px;
+    font-size: large;
+}
+.bottom{
+    display: flex;
+    justify-content:space-evenly;
+
+}
+.la_profile {
+    background-image: url("img/lamode.png");
+    background-size: 330px;
+    width: 330px;
+    height: 184px;
+}
+.family_profile {
+    background-image: url("img/familycontacts.png");
+    background-size: 330px;
+    width: 330px;
+    height: 184px;
+}
+.eleven_profile{
+    background-image: url("img/fiveEleven.png");
+    background-size: 330px;
+    width: 330px;
+    height: 184px;
+}
+.la_mode ,.eleven, .family_contact{
+    background-color: rgb(230, 222, 222);
+    height: 180px;
+
+}
+ul{
+    display:flex;
+    list-style-type: none;
+    align-items: center;
+    justify-content: center;
+
+}
+li{
+    margin: 2px;
+
+}
+
+h4{
+    font-size: large;
+    background-color: rgb(90, 122, 90);
+    width: 40%;
+    height:30px;
+    text-align: center;
+    border:1px solid black;
+    border-radius: 10px;
+    margin-left: 100px;
+    padding:1px;
+}
+.footer{
+    margin-top: 15px;
+    width: auto;
+    height: 60px;
+    background-color:rgb(246 241 241 / 81%);
+    text-align: center;
+    padding: 10px;
+}
+a{
+    font-size: 15px;
+    font-style:italic;
+}

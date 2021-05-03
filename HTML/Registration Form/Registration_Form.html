@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Registration</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <form>
+      <h1>My Registration Form</h1>
+      <table>
+        <tbody>
+          <tr>
+            <td><label for="first_name">First Name:</label></td>
+            <td><input type="text" id="first_name" name="first_name" /></td>
+          </tr>
+          <tr>
+            <td><label for="last_name">Last Name:</label></td>
+            <td><input type="text" id="last_name" name="last_name" /></td>
+          </tr>
+          <tr>
+            <td><label for="email">Email:</label></td>
+            <td><input type="text" id="email" name="email" /></td>
+          </tr>
+          <tr>
+            <td><label for="password">Password:</label></td>
+            <td><input type="password" id="password" name="password" /></td>
+          </tr>
+          <tr>
+            <td><label for="password_confirm">Pw confirm:</label></td>
+            <td><input type="password" id="password_confirm" name="password_confirm"/></td>
+          </tr>
+          <tr>
+            <td><label for="birthday">Birthday:</label></td>
+            <td><input type="date" id="birthday" name="birthday" /></td>
+          </tr>
+        </tbody>
+      </table>
+      <input type="radio" id="male" name="gender" value="male" />
+      <label for="male">Male</label>
+      <input type="radio" id="female" name="gender" value="female" />
+      <label for="female">Female</label>
+      <input type="radio" id="other" name="gender" value="other" />
+      <label for="other">other</label>
+      <h5>A short description about yourself:</h5>
+      <textarea name="description"></textarea>
+      <br>
+      <input type="submit" value="Submit" />
+    </form>
+  </body>
+</html>

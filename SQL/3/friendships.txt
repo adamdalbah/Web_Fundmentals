@@ -1,0 +1,36 @@
+0- SELECT users.first_name, users.last_name, user2.first_name as friend_first_name, user2.last_name as friend_last_name FROM users 
+JOIN friendships ON users.id = friendships.user_id 
+LEFT JOIN users as user2 ON  friendships.friend_id= user2.id; 
+
+1- SELECT users.first_name, users.last_name, user2.first_name as friend_first_name, user2.last_name as friend_last_name FROM users 
+JOIN friendships ON users.id = friendships.user_id 
+LEFT JOIN users as user2 ON  friendships.friend_id= user2.id
+WHERE user2.first_name = 'Kermit';
+
+2- SELECT users.first_name, users.last_name, count(friendships.friend_id) as friends FROM users 
+JOIN friendships ON users.id = friendships.user_id 
+LEFT JOIN users as user2 ON  friendships.friend_id= user2.id
+GROUP BY users.id;
+
+3- select k.first_name,k.last_name,max(friends) from (
+SELECT users.first_name, users.last_name, count(friendships.friend_id) as friends FROM users 
+JOIN friendships ON users.id = friendships.user_id 
+LEFT JOIN users as user2 ON  friendships.friend_id= user2.id
+GROUP BY users.id) as k;
+
+4- INSERT INTO users(first_name, last_name,created_at)
+VALUES ('Ronaldino','Barca',CURDATE());
+INSERT INTO friendships.friendships (id, user_id, friend_id) VALUES ('7', '6', '2');
+INSERT INTO friendships.friendships` (id, user_id, friend_id) VALUES ('8', '6', '4');
+INSERT INTO friendships.friendships` (id, user_id, friend_id) VALUES ('9', '6', '5');
+
+5- SELECT users.first_name, users.last_name, user2.first_name as friend_first_name, user2.last_name as friend_last_name FROM users 
+JOIN friendships ON users.id = friendships.user_id 
+LEFT JOIN users as user2 ON  friendships.friend_id= user2.id
+WHERE friendships.friend_id = 2 or users.first_name = 'Eli';
+
+6- DELETE FROM friendships WHERE friend_id=5;
+
+7-SELECT users.first_name, users.last_name, user2.first_name as friend_first_name, user2.last_name as friend_last_name FROM users 
+JOIN friendships ON users.id = friendships.user_id 
+LEFT JOIN users as user2 ON  friendships.friend_id= user2.id;

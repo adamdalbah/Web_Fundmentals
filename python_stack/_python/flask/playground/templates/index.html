@@ -1,0 +1,33 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playground</title>
+    <style>
+        h1{text-align: center;}
+        section{
+            text-align: center;
+        }
+        div{
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+            display:inline-block;
+            background-color: {{color}};
+            border:20px outset {{color}};
+        }
+    </style>
+</head>
+<body>
+    <h1>Playground</h1>
+    {%for i in range(num)%}
+        <section>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+        </section>
+    {%endfor%}
+
+</body>
+</html>

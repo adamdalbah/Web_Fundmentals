@@ -1,0 +1,41 @@
+
+form{
+    border: medium outset black;
+    margin:0 auto;
+    text-align: center;
+    max-width: 400px;
+    
+}
+p{
+    text-align: left;
+    margin-left: 10px;
+}
+input{
+    margin-left: 60px;
+}
+#location{
+    margin-left: 41px;
+}
+#language{
+    margin-left: 13px;
+}
+.comment{
+    display: block;
+    vertical-align: top;
+}
+#comment{
+    display: block;
+    margin-top: 10px;
+}
+.submit{
+    
+    margin-left: 310px;
+    max-width: 80px;
+    box-shadow: 3px 3px 3px black;
+}
+button{
+    color: white;
+    font-weight: 600;
+    background-color:lightblue;
+    width:80px;
+}

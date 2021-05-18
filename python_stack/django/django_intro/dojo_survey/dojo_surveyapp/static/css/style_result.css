@@ -1,0 +1,26 @@
+body{
+    border: medium outset black;
+    margin:0 auto;
+    max-width: 400px;
+    text-align: center;
+}
+h2{
+    text-align: left;
+    margin-left: 10px;
+    text-decoration: underline;
+    font-weight: bold;
+}
+button{
+    font-weight: 600;
+    background-color:lightblue;
+    width:80px;
+}
+a{
+    text-decoration: none;
+    color:white;
+}
+p{
+    text-align: left;
+    margin-left: 10px;
+
+}

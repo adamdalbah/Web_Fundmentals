@@ -1,0 +1,34 @@
+*{
+    margin:  auto;
+    text-align: center;
+    
+}
+body{
+    background-color: chocolate;
+}
+h1{
+    background: blue;
+}
+button{
+    margin-top: 40px;
+    background: green;
+}
+a{
+    text-decoration: none;
+    color: black;
+    font-size: large;
+}
+
+div{
+    margin-top: 60px;
+    background-color: yellowgreen;
+    border: 4px outset black;
+    border-radius: 8px;
+    max-width: 250px;
+    height: 250px;
+}
+input{
+    font-weight: bold;
+    background-color: blue;
+    margin-top: 50px;
+}

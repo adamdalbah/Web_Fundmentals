@@ -1,0 +1,64 @@
+In [1]: from users_app.models import User
+
+1- Query: Create 3 users:
+
+In [2]: User.objects.create(first_name="Adam", last_name="Dalbah", email_address="adamdalbah@gmail.com", age=24)
+Out[2]: <User: User object (1)>
+
+In [3]: User.objects.create(first_name="Mohammad", last_name="Bayatna", email_address="MohammadBayatna@gmail.com", age=
+   ...: 22)
+Out[3]: <User: User object (2)>
+
+In [4]: User.objects.create(first_name="Rami", last_name="Refat", email_address="RamiRefat@gmail.com", age=26)
+Out[4]: <User: User object (3)>
+
+2- Query: Retrieve all the users:
+
+In [6]: User.objects.all()
+Out[6]: <QuerySet [<User: User object (1)>, <User: User object (2)>, <User: User object (3)>]>
+
+or 
+In [11]: User.objects.all().values()
+Out[11]: <QuerySet [{'id': 1, 'first_name': 'Adam', 'last_name': 'Dalbah', 'email_address': 'adamdalbah@gmail.com', 'age': 24, 'created_at': datetime.datetime(2021, 5, 20, 14, 19, 58, 592923, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 20, 14, 19, 58, 592923, tzinfo=<UTC>)}, {'id': 2, 'first_name': 'Mohammad', 'last_name': 'Bayatna', 'email_address': 'MohammadBayatna@gmail.com', 'age': 22, 'created_at': datetime.datetime(2021, 5, 20, 14, 21, 27, 384360, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 20, 14, 21, 27, 384360, tzinfo=<UTC>)}, {'id': 3, 'first_name': 'Rami', 'last_name': 'Refat', 'email_address': 'RamiRefat@gmail.com', 'age': 26, 'created_at': datetime.datetime(2021, 5, 20, 14, 22, 41, 525338, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 20, 14, 22, 41, 525338, tzinfo=<UTC>)}]>
+
+3-Query: Retrieve the last user:
+
+In [2]: User.objects.last()
+Out[2]: <User: User object (3)>
+
+4-Query: Retrieve the first user:
+
+In [14]: User.objects.first()
+Out[14]: <User: User object (1)>
+
+5- Query: Change the user with id=3 so their last name is Pancakes:
+
+In [3]: user_3 = User.objects.get(id=3)
+
+In [4]: user_3.last_name = "Pancakes"
+
+In [5]: print(user_3.last_name)
+Pancakes
+
+6- Query: Delete the user with id=2 from the database:
+
+In [6]: user_delete = User.objects.get(id=2)
+
+In [7]: user_delete.delete()
+Out[7]: (1, {'users_app.User': 1})
+
+In [8]: User.objects.all()
+Out[8]: <QuerySet [<User: User object (1)>, <User: User object (3)>]>
+
+7-  Query: Get all the users, sorted by their first name:
+
+In [9]: User.objects.all().order_by("first_name")
+Out[9]: <QuerySet [<User: User object (1)>, <User: User object (3)>]>
+
+In [10]: User.objects.all().values()
+Out[10]: <QuerySet [{'id': 1, 'first_name': 'Adam', 'last_name': 'Dalbah', 'email_address': 'adamdalbah@gmail.com', 'age': 24, 'created_at': datetime.datetime(2021, 5, 20, 14, 19, 58, 592923, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 20, 14, 19, 58, 592923, tzinfo=<UTC>)}, {'id': 3, 'first_name': 'Rami', 'last_name': 'Refat', 'email_address': 'RamiRefat@gmail.com', 'age': 26, 'created_at': datetime.datetime(2021, 5, 20, 14, 22, 41, 525338, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 20, 14, 22, 41, 525338, tzinfo=<UTC>)}]>
+
+8- BONUS Query: Get all the users, sorted by their first name in descending order:
+
+In [12]: User.objects.all().order_by("-first_name")
+Out[12]: <QuerySet [<User: User object (3)>, <User: User object (1)>]>

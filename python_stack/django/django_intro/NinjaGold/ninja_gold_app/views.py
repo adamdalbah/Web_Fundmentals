@@ -1,0 +1,42 @@
+from django.shortcuts import render, redirect, HttpResponse
+import random, datetime
+def index(request):
+    return render(request, "index.html")
+
+def process_money(request):
+    if request.method == "POST":
+        if 'count' not in request.session or 'activites' not in request.session:
+            request.session['count']=0 
+            request.session['activites']=[]
+
+        if request.POST['building'] == 'farm' :
+            gold = random.randint(10,20)
+            request.session['count'] += gold
+            request.session['activites'].append('Earned ' + str(gold) + ' golds from the farm! '+ str(datetime.datetime.now()))
+            
+
+        if request.POST['building'] == 'cave' :
+            gold = random.randint(5,10)
+            request.session['count'] += gold
+            request.session['activites'].append('Earned ' + str(gold) + ' golds from the farm! '+ str(datetime.datetime.now()))
+            
+
+        if request.POST['building'] == 'house' :
+            gold = random.randint(2,5)
+            request.session['count'] += gold
+            request.session['activites'].append('Earned ' + str(gold) + ' golds from the farm! ' + str(datetime.datetime.now()))
+            
+
+        if request.POST['building'] == 'casino' :
+            gold = random.randint(0,50)
+            request.session['count'] += gold
+            request.session['activites'].append('Earned ' + str(gold) + ' golds from the farm! ' + str(datetime.datetime.now()))
+
+        return redirect('/')
+
+def reset(request):
+    request.session.clear()
+    return redirect('/')
+    
+
+# Create your views here.

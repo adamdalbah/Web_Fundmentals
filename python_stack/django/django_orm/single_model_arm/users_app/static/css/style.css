@@ -1,0 +1,7 @@
+*{
+    margin: auto;
+    text-align: center;
+}
+table,thead,td,th,tbody{
+    border: medium outset black;
+}

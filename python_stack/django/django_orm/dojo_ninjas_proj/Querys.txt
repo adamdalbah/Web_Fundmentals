@@ -1,0 +1,133 @@
+1- Query: Create 3 new dojos:
+
+In [2]: Dojo.objects.create(name="Adam Dalbah",city="Tulkarm",state="Palestine")
+Out[2]: <Dojo: Dojo object (1)>
+
+In [3]: Dojo.objects.create(name="Rami Abbas",city="Nablus",state="Palestine")
+Out[3]: <Dojo: Dojo object (2)>
+
+In [4]: Dojo.objects.create(name="Michel Jordan",city="Alzrqa",state="Jordan")
+Out[4]: <Dojo: Dojo object (3)>
+
+2- Query: Delete the 3 dojos you just created:
+
+In [6]: all_dojos = Dojo.objects.all()
+
+In [7]: all_dojos.delete()
+Out[7]: (3, {'dojo_ninjas_app.Ninja': 0, 'dojo_ninjas_app.Dojo': 3})
+
+In [8]: Dojo.objects.all().delete()
+Out[8]: (0, {})
+
+In [9]: Dojo.objects.all()
+Out[9]: <QuerySet []>
+
+3- Query: Create 3 more dojos:
+
+In [7]: Dojo.objects.all().values()
+Out[7]: <QuerySet [{'id': 4, 'name': 'Alex Masood', 'city': 'Tokyo', 'state': 'Japan', 'created_at': datetime.datetime(2021, 5, 23, 11, 34, 43, 933330, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 11, 34, 43, 933330, tzinfo=<UTC>)}, {'id': 5, 'name': 'Mohammad Ragh', 'city': 'Las Angelos', 'state': 'UN', 'created_at': datetime.datetime(2021, 5, 23, 12, 2, 54, 402904, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 12, 2, 54, 402904, tzinfo=<UTC>)}, {'id': 6, 'name': 'Om ', 'city': 'Alqahrah', 'state': 'Egypt', 'created_at': datetime.datetime(2021, 5, 23, 12, 5, 43, 923803, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 12, 5, 43, 923803, tzinfo=<UTC>)}]>
+
+4-Query: Create 3 ninjas that belong to the first dojo, Query: 
+5-Create 3 ninjas that belong to the second dojo:
+6-Create 3 ninjas that belong to the third dojo:
+
+First Ninja:
+In [8]: Ninja.objects.create(first_name="Hilal", last_name="Blal", dojo=Dojo.objects.first())
+Out[8]: <Ninja: Ninja object (1)>
+
+In [13]: Ninja.objects.create(first_name="Ronaldino", last_name="Abu Shams", dojo=Dojo.objects.first())
+Out[13]: <Ninja: Ninja object (6)>
+
+In [14]: Ninja.objects.create(first_name="Ronaldino", last_name="Abu Shams", dojo=Dojo.objects.first())
+Out[14]: <Ninja: Ninja object (7)>
+
+Second Ninja:
+
+In [9]: Ninja.objects.create(first_name="Bilal", last_name="Hilal", dojo=Dojo.objects.get(id=5))
+Out[9]: <Ninja: Ninja object (2)>
+
+In [15]: Ninja.objects.create(first_name="Ronald", last_name="Mkmas", dojo=Dojo.objects.get(id=5))
+Out[15]: <Ninja: Ninja object (8)>
+
+In [16]: Ninja.objects.create(first_name="Ramos", last_name="Column", dojo=Dojo.objects.get(id=5))
+Out[16]: <Ninja: Ninja object (9)>
+
+Third ninja:
+
+In [10]: Ninja.objects.create(first_name="Michel", last_name="Shmakhar", dojo=Dojo.objects.last())
+Out[10]: <Ninja: Ninja object (3)>
+
+In [11]: Ninja.objects.create(first_name="Ronaldo", last_name="Abu Ghosh", dojo=Dojo.objects.last())
+Out[11]: <Ninja: Ninja object (4)>
+
+In [12]: Ninja.objects.create(first_name="Ronaldino", last_name="Abu Shams", dojo=Dojo.objects.last())
+Out[12]: <Ninja: Ninja object (5)>
+
+7-Query: Retrieve all the ninjas from the first dojo:
+
+In [31]: FirstNinjas= Dojo.objects.get(id=4).ninjas.all()
+
+In [32]: for ninja in FirstNinjas:
+    ...:     print(ninja)
+    ...:
+Ninja object (1)
+Ninja object (6)
+Ninja object (7)
+
+In [33]: for ninja in FirstNinjas:
+    ...:     print(ninja.__dict__)
+    ...:
+    ...:
+{'_state': <django.db.models.base.ModelState object at 0x0186D208>, 'id': 1, 'first_name': 'Hilal', 'last_name': 'Blal', 'dojo_id': 4, 'created_at': datetime.datetime(2021, 5, 23, 12, 13, 46, 889446, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 12, 13, 46, 889446, tzinfo=<UTC>)}
+{'_state': <django.db.models.base.ModelState object at 0x0186D058>, 'id': 6, 'first_name': 'Ronaldino', 'last_name': 'Abu Shams', 'dojo_id': 4, 'created_at': datetime.datetime(2021, 5, 23, 12, 21, 5, 53602, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 12, 21, 5, 53602, tzinfo=<UTC>)}
+{'_state': <django.db.models.base.ModelState object at 0x0186D8F8>, 'id': 7, 'first_name': 'Ronaldino', 'last_name': 'Abu Shams', 'dojo_id': 4, 'created_at': datetime.datetime(2021, 5, 23, 12, 21, 10, 898443, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 12, 21, 10, 898443, tzinfo=<UTC>)}
+
+
+8- Query: Retrieve all the ninjas from the last dojo:
+
+In [34]: for ninja in Dojo.objects.last().ninjas.all():
+    ...:     print(ninja.__dict__)
+    ...:
+{'_state': <django.db.models.base.ModelState object at 0x0189CF70>, 'id': 3, 'first_name': 'Michel', 'last_name': 'Shmakhar', 'dojo_id': 6, 'created_at': datetime.datetime(2021, 5, 23, 12, 16, 1, 635170, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 12, 16, 1, 635170, tzinfo=<UTC>)}
+{'_state': <django.db.models.base.ModelState object at 0x0189C520>, 'id': 4, 'first_name': 'Ronaldo', 'last_name': 'Abu Ghosh', 'dojo_id': 6, 'created_at': datetime.datetime(2021, 5, 23, 12, 18, 47, 786384, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 12, 18, 47, 786384, tzinfo=<UTC>)}
+{'_state': <django.db.models.base.ModelState object at 0x0189C1D8>, 'id': 5, 'first_name': 'Ronaldino', 'last_name': 'Abu Shams', 'dojo_id': 6, 'created_at': datetime.datetime(2021, 5, 23, 12, 19, 27, 589084, tzinfo=<UTC>), 'updated_at': datetime.datetime(2021, 5, 23, 12, 19, 27, 589084, tzinfo=<UTC>)}
+
+
+9-Query: Retrieve the last ninja's dojo:
+
+In [36]: Ninja.objects.last().dojo.__dict__
+Out[36]:
+{'_state': <django.db.models.base.ModelState at 0x189c220>,
+ 'id': 5,
+ 'name': 'Mohammad Ragh',
+ 'city': 'Las Angelos',
+ 'state': 'UN',
+ 'created_at': datetime.datetime(2021, 5, 23, 12, 2, 54, 402904, tzinfo=<UTC>),
+ 'updated_at': datetime.datetime(2021, 5, 23, 12, 2, 54, 402904, tzinfo=<UTC>)}
+
+10-Create and run the migration files to update the table in your database. If needed, provide a default value of "old dojo":
+
+You are trying to add a non-nullable field 'desc' to dojo without a default; we can't do that (the database needs something to populate existing rows).
+Please select a fix:
+ 1) Provide a one-off default now (will be set on all existing rows with a null value for this column)
+ 2) Quit, and let me add a default in models.py
+Select an option: 1
+Please enter the default value now, as valid Python
+The datetime and django.utils.timezone modules are available, so you can do e.g. timezone.now
+Type 'exit' to exit this prompt
+>>> "old dojo"
+Migrations for 'dojo_ninjas_app':
+  dojo_ninjas_app\migrations\0002_dojo_desc.py
+    - Add field desc to dojo
+
+11- Query: Create a new dojo:
+
+In [1]: from dojo_ninjas_app.models import Dojo
+
+In [2]: Dojo.objects.create(name="Jinja" , city="Moscow", state="Russia", desc="new dojo")
+Out[2]: <Dojo: Dojo object (7)>
+
+
+
+
+

@@ -3,8 +3,19 @@
     text-align: center;
 }
 body{
-    background: green;
+    background-image: url('1.jpg');
+    
 }
+#container{
+    max-width: 1200px;
+    height:auto;
+    padding-top: 50px;
+    padding-bottom:50px ;
+    background-image:url('0.jpg');
+    border-radius: 12px;
+    box-shadow: 3px 3px black;
+}
+
 td,option,h1{
     font-size: larger;
     font-family: cursive;
@@ -23,6 +34,8 @@ input , select{
     background: gold;
     padding-bottom: 10px;
     border-radius: 12px;
+    border:medium outset black;
+    box-shadow: 2px 2px black;
 }
 
 select{
@@ -40,7 +53,14 @@ button{
 }
 button:hover, button:active {
     background-color: green;
-  }
+}
+.upper:hover, .upper:active{
+    background-color: lightgreen;
+}
 .lower{
     margin-top: 20px;
+}
+li{
+    list-style-type: none;
+    font-family: cursive;
 }

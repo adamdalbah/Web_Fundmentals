@@ -9,46 +9,60 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css'%}">
 </head>
 <body>
-    <div class="upper">
-        <section>
-            <h1>Add a Dojo</h1>
-            <form action="/add" method="POST">
-                {% csrf_token %}
-                <input type="hidden" name="form1" value="dojo">
-                <table>
-                    <tr><td>Name:</td><td><input type="text" name="name"></td></tr>
-                    <tr><td>City:</td><td><input type="text" name="city"></td></tr>
-                    <tr><td>State:</td><td><input type="text" name="state"></td></tr>
-                    <tr><td></td><td><button type="submit">Add</button></td></tr>
-                </table>
-            </form>
-        </section>
-        <section>
-            <h1>Add a Ninja</h1>
-            <form action="/add" method="POST">
-                {% csrf_token %}
-                <input type="hidden" name="form1" value="dojo">
-                <table>
-                    <tr><td>First Name:</td><td><input type="text" name="fname"></td></tr>
-                    <tr><td>Last Name:</td><td><input type="text" name="lname"></td></tr>
-                    <tr>
-                        <td>Dojo:</td>
-                        <td>
-                            <select>
-                                <option value="dojo1">dojo1</option>
-                                <option value="dojo2">dojo2</option>
-                                <option value="dojo3">dojo3</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr><td></td><td><button type="submit">Add</button></td></tr>
-                </table>
-            </form>
-        </section>
-    </div>
-    <hr>
-    <div class="lower">
-        <h1>All the Dojos</h1>
+    <div id=container>
+        <div class="upper">
+            <section>
+                <h1>Add a Dojo</h1>
+                <form action="/add" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="form" value="dojo">
+                    <table>
+                        <tr><td>Name:</td><td><input type="text" name="name"></td></tr>
+                        <tr><td>City:</td><td><input type="text" name="city"></td></tr>
+                        <tr><td>State:</td><td><input type="text" name="state"></td></tr>
+                        <tr><td></td><td><button type="submit">Add</button></td></tr>
+                    </table>
+                </form>
+            </section>
+            <section>
+                <h1>Add a Ninja</h1>
+                <form action="/add" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="form" value="ninja">
+                    <table>
+                        <tr><td>First Name:</td><td><input type="text" name="fname"></td></tr>
+                        <tr><td>Last Name:</td><td><input type="text" name="lname"></td></tr>
+                        <tr>
+                            <td>Dojo:</td>
+                            <td>
+                                <select name="dojoz">
+                                    <option selected>Select a Dojo ...</option>
+                                    {%for dojo in dojos%}
+                                        <option >{{dojo.name}}</option>
+                                    {%endfor%}
+                                </select>
+                            </td>
+                        </tr>
+                        <tr><td></td><td><button type="submit">Add</button></td></tr>
+                    </table>
+                </form>
+            </section>
+        </div>
+        <hr>
+        <div class="lower">
+            <h1>All the Dojos</h1>
+            <ul>
+                {%for dojo in dojos%}
+                    <li>Ninja at the {{dojo.name}} Dojo
+                        <ul>
+                            {%for ninjaz in dojo.ninjas.all%}
+                                <li>{{ninjaz.first_name}} {{ninjaz.last_name}}</li>
+                            {%endfor%}
+                        </ul>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 </body>
 </html>

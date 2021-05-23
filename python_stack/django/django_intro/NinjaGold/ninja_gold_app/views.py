@@ -18,19 +18,19 @@ def process_money(request):
         if request.POST['building'] == 'cave' :
             gold = random.randint(5,10)
             request.session['count'] += gold
-            request.session['activites'].append('Earned ' + str(gold) + ' golds from the farm! '+ str(datetime.datetime.now()))
+            request.session['activites'].append('Earned ' + str(gold) + ' golds from the cave! '+ str(datetime.datetime.now()))
             
 
         if request.POST['building'] == 'house' :
             gold = random.randint(2,5)
             request.session['count'] += gold
-            request.session['activites'].append('Earned ' + str(gold) + ' golds from the farm! ' + str(datetime.datetime.now()))
+            request.session['activites'].append('Earned ' + str(gold) + ' golds from the house! ' + str(datetime.datetime.now()))
             
 
         if request.POST['building'] == 'casino' :
             gold = random.randint(0,50)
             request.session['count'] += gold
-            request.session['activites'].append('Earned ' + str(gold) + ' golds from the farm! ' + str(datetime.datetime.now()))
+            request.session['activites'].append('Earned ' + str(gold) + ' golds from the casino! ' + str(datetime.datetime.now()))
 
         return redirect('/')
 

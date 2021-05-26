@@ -17,7 +17,7 @@
         <p>Network</p>
         <input name="network" type="text" value="{{shows.network}}">
         <p>Release Date</p>
-        <input name="release_date" type="date" value="{{shows.release_date}}">
+        <input name="release_date" type="date" value="{{shows.release_date|date:"Y-m-d"}}">
         <label for="Description">Description :</label>
         <textarea id="Description" name="desc"  rows="4" cols="50">
             {{shows.description}}

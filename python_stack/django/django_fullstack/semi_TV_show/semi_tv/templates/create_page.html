@@ -19,9 +19,15 @@
         <p>Release Date</p>
         <input type= "date" name="date" >
         <label for="Description">Description :</label>
-        <textarea id="Description" name="desc" rows="4" cols="50">
-        </textarea>
+        <textarea  id="Description" name="desc" rows="4" cols="50"></textarea>
         <button type="submit" name="submit">Create</button>
     </form>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif%}
 </body>
 </html>

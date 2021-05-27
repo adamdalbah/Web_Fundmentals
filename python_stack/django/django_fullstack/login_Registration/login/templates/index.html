@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login And Registration</title>
+    {% load static%}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css'%}">
+</head>
+<body>
+    <h2>Login</h2>
+    <form action="/login" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="login_type" value="login"/>
+        <table>
+            <tr><td>Email:</td><td><input type="text" name="email" value=""/></td></tr>
+            <tr><td>Password:</td><td><input type="password" name="password" value=""/></td></tr>
+        </table>
+        <input id="in" type="submit" name="submit" value="Login"/>
+    </form>
+    <h2>Registration</h2>
+    <form action="/login" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="login_type" value="registration"/>
+        <table>
+            <tr><td> First Name:</td><td><input type="text" name="fname" value=""/></td></tr>
+            <tr><td> last Name:</td><td><input type="text" name="lname" value=""/></td></tr>
+            <tr><td> Email:</td><td><input type="text" name="email" value=""/></td></tr>
+            <tr><td>Password:</td><td><input type="password" name="password" value=""/></td></tr>
+            <tr><td>Confirm Password:</td><td><input type="password" name="cpassword" value=""/></td></tr>
+        </table>
+        <input id="in" type="submit" name="submit" value="Register"/>
+    </form>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</body>
+</html>

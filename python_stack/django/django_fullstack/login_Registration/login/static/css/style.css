@@ -1,0 +1,31 @@
+*{
+    margin:0 auto;
+    text-align: center;
+    font-family: cursive;
+}
+body{
+    background-image: url('0.jpg');
+}
+
+#in:hover, #in:active{
+    background-color: greenyellow;
+}
+#in{
+    background-color: indianred;
+    font-size: large;
+    border-radius: 10px;
+    margin-left: 3%;
+}
+td{
+    font-size: large;
+}
+input{
+    border-radius: 10px;
+}
+form{
+    text-align: right;
+    padding: 10px;
+    border-radius: 10px;
+    width: 500px;
+    background-color: teal;
+}

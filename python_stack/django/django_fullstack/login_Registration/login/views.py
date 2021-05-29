@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from . import models
 from .models import User
+import bcrypt
+
 
 def index(request):
     return render(request, "index.html")
@@ -18,8 +20,11 @@ def login(request):
                     context = {
                             'fname':User.objects.filter(email=request.POST['email']).first()
                     }
-                    
+                    if 'name' not in request.session:
+                        request.session['name'] = context['fname'].first_name
                     return render(request,"welcome.html",context)
+                else: 
+                    return redirect("/")
 
         
 
@@ -31,9 +36,19 @@ def login(request):
                     messages.error(request, value)
                 return redirect('/')
             else:
-                models.register(request.POST['fname'], request.POST['lname'],
-                request.POST['email'], request.POST['password'], request.POST['cpassword'])
+                if request.POST['password'] == request.POST['cpassword']:
+                    hash = bcrypt.hashpw(request.POST['password'].encode(), bcrypt.gensalt()).decode()
+                    models.register(request.POST['fname'], request.POST['lname'],
+                    request.POST['email'], hash)
+                    if 'name' not in request.session:
+                        request.session['name'] = request.POST['fname']
     
+    return redirect('/register')
+def logout(request):
+    if 'name' in request.session:
+        del request.session['name']
     return redirect('/')
+def register(request):
+    return render(request, "welcome.html")
 
 # Create your views here.

@@ -6,8 +6,8 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Success! Welcome, {{fname.first_name}}! </h1>
+    <h1>Success! Welcome, {{request.session.name}}! </h1>
     <p style="color: chartreuse;">Successfully registered (or logged in)!</p>
-    <a href="/">Logout</a>
+    <a href="/logout">Logout</a>
 </body>
 </html>

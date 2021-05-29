@@ -1,5 +1,6 @@
 from django.db import models
 import re
+import bcrypt
 
 class UserManager(models.Manager):
     def validator(self, postD):
@@ -38,22 +39,20 @@ class User(models.Model):
     last_name = models.CharField(max_length=255)
     email = models.CharField(max_length=255)
     password= models.CharField(max_length=255)
-    cpassword= models.CharField(max_length=255)
     created_at= models.DateTimeField(auto_now_add=True)
     updated_at= models.DateTimeField(auto_now=True)
     objects = UserManager()
 # Create your models here.
 
-def register(fname, lname, email, passwd, cpasswd):
+def register(fname, lname, email, passwd):
     User.objects.create(first_name = fname, last_name= lname, email = email,
-    password = passwd, cpassword = cpasswd)
+    password = passwd)
     print(User.objects.all())
 
 def check_user(email, passwd):
     user_name = User.objects.filter(email=email)
     if user_name == None:
         return False
-    
-    if user_name.first().password == passwd:
+    if bcrypt.checkpw(passwd.encode(), user_name[0].password.encode()):
         return True
     return False

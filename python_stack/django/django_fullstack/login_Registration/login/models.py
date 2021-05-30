@@ -23,6 +23,7 @@ class UserManager(models.Manager):
         
         return errors
 
+
     def login_validator(self, postD):
         errors = {}
         EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
@@ -44,6 +45,8 @@ class User(models.Model):
     objects = UserManager()
 # Create your models here.
 
+
+
 def register(fname, lname, email, passwd):
     User.objects.create(first_name = fname, last_name= lname, email = email,
     password = passwd)
@@ -51,7 +54,7 @@ def register(fname, lname, email, passwd):
 
 def check_user(email, passwd):
     user_name = User.objects.filter(email=email)
-    if user_name == None:
+    if not user_name:
         return False
     if bcrypt.checkpw(passwd.encode(), user_name[0].password.encode()):
         return True

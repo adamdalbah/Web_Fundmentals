@@ -11,6 +11,7 @@ def login(request):
     if request.method == "POST":
         if request.POST['login_type'] == "login":
             errors_login = User.objects.login_validator(request.POST)
+            
             if len(errors_login) > 0:
                 for key, value in errors_login.items():
                     messages.error(request, value)
